@@ -34,6 +34,7 @@ def main(args):
     # axes[1,1].yaxis.set_label_position("right")
     axes[0,1].set_title("Rate [$/word] * Volume")
     fig.colorbar(im, ax=axes.ravel().tolist())
+    plt.suptitle(args.title)
     plt.savefig(args.outfile)
     plt.clf()
 
@@ -63,5 +64,12 @@ if __name__ == '__main__':
         nargs='?',
         default=0.16,
         help="Max rate"
+    )
+    parser.add_argument(
+        "-t", "--title", dest="title",
+        type=str,
+        nargs='?',
+        default="",
+        help="Figure title"
     )
     main(parser.parse_args())
